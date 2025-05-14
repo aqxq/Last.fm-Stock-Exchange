@@ -55,6 +55,11 @@ body{
     list-style: none;
 }
 
+.sidebar-nav li{
+    padding: 10px 20px;
+    margin-bottom: 5px;
+}
+
 .sidebar-nav a{
     color: white;
     text-decoration: none;
@@ -63,8 +68,19 @@ body{
     transition: all 0.3s ease;
 }
 
+.sidebar-nav a i{
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
 .sidebar-nav a:hover{
     background: rgba(255,255,255,0.1)
+}
+
+.sidebar-nav li.active{
+    background-color: rgba(255,255,255,0.05);
+    border-left-color: #9b59b6;
 }
 
 .sidebar-nav i{
@@ -138,11 +154,26 @@ body{
     cursor: pointer;
 }
 
+.user-info username {
+    font-weight: bold;
+}
+
+.user-info .balance {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+
 .user-avatar{
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin-right: 8px;
+}
+
+.user-info{
+    display: block;
+    align-items: center;
 }
 
 .market-cards{
