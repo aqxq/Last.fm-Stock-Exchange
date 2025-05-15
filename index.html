@@ -181,16 +181,57 @@
                 </div>
             </div>
             <div class="tab-pane" id="trending">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Trending Stocks</h3>
+                        <p class="text-muted">Most active stocks in the last 24 hours</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="trending-stocks">
 
+                        </div>
+                        <div class="text-center mt-20">
+                            <button class="btn btn-primary">View All Stocks</button>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="tab-pane" id="portfolio">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="portfolio-header">
+                            <div>
+                                <h3>Portfolio Summary</h3>
+                                <span class="value">$12,345.67</span>
+                                <span class="change positive">+1,234.56 (11.2%)</span>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">View Full Portfolio</button>
+                    </div>
+                    <div class="portfolio-holdings">
+                        <div class="holdings-header">
+                            <div class="col-large">Top Holdings</div>
+                            <div class="col">Shares</div>
+                            <div class="col">Price</div>
+                            <div class="col">Value</div>
+                            <div class="col">Change</div>
+                            <div class="col-small"></div>
+                        </div>
+                        <div class="holdings-body">
 
+                        </div>
+                    </div>
+                    <div class="text-center mt-20">
+                        <button class="btn btn-outline">View All Holdings</button>
+                    </div>
+                </div>
             </div>
             <div class="tab-pane" id="transactions">
 
             </div>
       </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>

@@ -351,3 +351,141 @@ body{
     font-size: 0.8rem;
     color: #95a5a6;
 }
+
+.trending-stocks{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.stock-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.stock-info{
+    display: flex;
+    align-items: center;
+}
+
+.stock-avatar{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    background-color: #9b59b6;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.stock-price{
+    text-align: right;
+}
+
+.stock-name{
+    font-weight: 600;
+}
+
+.stock-current{
+    font-weight: 700;
+}
+
+.stock-change i{
+    margin-right: 5px;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.mt-20{
+    margin-top: 20px;
+}
+
+.stock-change{
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.portfolio-header{
+    display: flex; 
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.portfolio-value{
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.portfolio-value .value{
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.portfolio-holdings{
+    margin-bottom: 20px;
+}
+
+.holdings-header{
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.8rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.holdings-body{
+    margin-top: 10px;
+}
+
+.holding-row{
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    align-items: center;
+}
+
+.col-large{
+    flex: 2;
+}
+
+.col{
+    flex: 1;
+    text-align: right;
+}
+
+.col-small{
+    width: 40px;
+    text-align: right;
+}
+
+.holding-info{
+    display: flex;
+    align-items: center;
+}
+
+.action-button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #2c3e50;
+}
+
+.action-button:hover{
+    color: #1a1a2e;
+}
+
