@@ -489,3 +489,10 @@ body{
     color: #1a1a2e;
 }
 
+.tab-pane{
+    display: none;
+}
+
+.tab-pane.active{
+    display: block;
+}
