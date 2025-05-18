@@ -244,6 +244,58 @@
             </div>
       </main>
     </div>
+    <div class="modal" id="tradeModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Trade $KLAMAR</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="trade-tabs">
+            <div class="trade-tab active" data-trade-tab="buy">Buy</div>
+            <div class="trade-tab" data-trade-tab="sell">Sell</div>
+          </div>
+          <div class="trade-form">
+            <div class="form-group">
+              <label for="shares">Shares</label>
+              <input type="number" id="shares" min="1" value="1">
+            </div>
+            <div class="form-update">
+              <label for="orderType">Order Type</label>
+              <div class="order-type-tabs">
+                <div class="order-type-tabs active" data-order-type="market">Market</div>
+                <div class="order-type-tab" data-order-type="limit">Limit</div>
+              </div>
+            </div>
+            <div class="order-type-content" id="marketOrder">
+              <div class="market-price">
+                <span>Current Price</span>
+                <span class="price">$24.35</span>
+              </div>
+            </div>
+            <div class="order-type-content" id="limitOrder" style="display: none;">
+              <div class="form-group">
+                <label for="limitPrice">Limit Price</label>
+                <input type="number" id="limitPrice" step="0.01" value="24.35">
+              </div>
+            </div>
+            <div class="trade-summary">
+              <div class="summary-row">
+                <span>Estimated Total</span>
+                <span class="total">$24.35</span>
+              </div>
+            </div>
+            <div class="available-funds">
+              You have <span class="funds">$3,541.68</span> available to trade
+            </div>
+            <div class="trade-actions">
+              <button class="btn btn-primary btn-block" id="buyButton">Buy $KLAMAR</button>
+              <button class="btn btn-danger btn-block" id="sellButton" style="display: none;">Sell $KLAMAR</button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/main.js"></script>
   </body>
