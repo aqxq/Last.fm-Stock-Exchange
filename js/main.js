@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     createStockChart();
     populateTrendingStocks();
     populatePortfolioHoldings();
+    populateTransactions();
 });
 
 //chart
@@ -157,5 +158,49 @@ function populatePortfolioHoldings() {
         `;
         
         holdingsContainer.appendChild(holdingRow);
+    });
+}
+
+//transactions
+function populateTransactions(){
+    const transactionsContainer = document.querySelector('.transactions');
+    if(!transactionsContainer) return;
+
+    const transactions = [
+        {type: 'buy', symbol: 'KLAMAR', name: 'Kendrick Lamar', shares: 10, price: 23.45, total: 234.50, date: 'May 10, 2:32 PM EST'},
+        {type: 'sell', symbol: 'DRAKE', name: 'Drake', shares: 5, price: 19.87, total: 99.35, date: 'May 8, 9:15 AM EST'},
+        {type: 'buy', symbol: 'BILLIE', name: 'Billie Eilish', shares: 15, price: 15.32, total: 229.80, date: 'May 5, 4:45 PM EST'},
+        {type: 'buy', symbol: 'WEEKND', name: 'The Weeknd', shares: 8, price: 18.75, total: 150.00, date: 'May 3, 11:20 AM EST'}
+    ]
+
+    transactionsContainer.innerHTML = '';
+    transactions.forEach(transaction => {
+        const transactionItem = document.createElement('div');
+        transactionItem.className = 'transaction-item';
+        const iconClass = transaction.type === 'buy' ? 'fa-arrow-up' : 'fa-arrow-down';
+
+        transactionItem.innerHTML = `
+            <div class="transaction-left">
+                <div class="transaction-icon ${transaction.type}">
+                    <i class="fas ${iconClass}"></i>
+                </div>
+                <div>
+                    <div class="stock-name">$${transaction.symbol}</div>
+                    <div class="stock-artist">${transaction.name}</div>
+                </div>
+            </div>
+            <div class="transaction-middle">
+                <div class="transaction-badge ${transaction.type}">${transaction.type}</div>
+                <div class="transaction-details">
+                    ${transaction.shares} shares @ $${transaction.price.toFixed(2)}
+                </div>
+            </div>
+            <div class="transaction-right">
+                <div class="transaction-amount">$${transaction.total.toFixed(2)}</div>
+                <div class="transaction-date">${transaction.date}</div>
+            </div>
+        `;
+
+        transactionsContainer.appendChild(transactionItem);
     });
 }

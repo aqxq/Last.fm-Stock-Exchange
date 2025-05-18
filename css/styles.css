@@ -496,3 +496,87 @@ body{
 .tab-pane.active{
     display: block;
 }
+
+.transactions{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.transaction-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.transaction-left{
+    display: flex;
+    align-items: center;
+}
+
+.transaction-middle{
+    text-align: center;
+}
+
+.transaction-right{
+    text-align: right;
+}
+
+.transaction-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.transaction-icon.buy{
+    background-color: rgba(46,204,113,0.1);
+    color: #2ecc71
+}
+
+.transaction-icon.sell{
+    background-color: rgba(231,76,60,0.1);
+    color: #e74c3c;
+}
+
+.transaction-badge{
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.transaction-badge.buy{
+    background-color: #2ecc71;
+    color: white;
+}
+
+.transaction-badge.sell{
+    background-color: #e74c3c;
+    color: white;
+}
+
+.transaction-details{
+    font-size: 0.8rem;
+    color: #95a595;
+    margin-top: 5px;
+}
+
+.transaction-amount{
+    font-weight: 700;
+}
+
+.transaction-date{
+    font-size: 0.8rem;
+    color: #9ba5a6;
+    margin-top: 5px;
+}
