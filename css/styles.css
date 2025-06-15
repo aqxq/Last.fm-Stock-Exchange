@@ -5,7 +5,7 @@
     --bg-card: #1a1a2e;
     --bg-hover: #2a2a3e;
     --text-primary: #ffffff;
-    --text-sscondary: #b8b8d1;
+    --text-secondary: #b8b8d1;
     --text-muted: #6c7293;
     --accent-primary: #7c3aed;
     --accent-secondary: #a855f7;
@@ -32,40 +32,186 @@ body{
     color: var(--text-primary);
     line-height: 1.6;
     background-color: var(--bg-primary);
-}
-
-.mobile-menu-toggle{
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-@media (max-width: 768px){
-    .mobile-menu-toggle{
-        display: block;
-    }
-
-    .sidebar{
-        display: none;
-        position: fixed;
-        z-index: 100;
-        height: 100%;
-    }
-
-    .sidebar.active{
-        display: flex;
-        width: 100%;
-    }
+    overflow-x: hidden;
 }
 
 .app-container{
     min-height: 100vh;
     display: flex;
+    position: relative;
+}
+
+.mobile-menu-toggle{
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.mobile-menu-toggle:hover{
+    background: var(--bg-hover);
+    border-color: var(--border-hover);
+}
+
+.mobile-menu-toggle i{
+    font-size: 1.2rem;
+    color: var(--text-primary);
+}
+
+.sidebar{
+    width: 280px;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar-header{
+    padding: 24px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.logo i{
+    color: var(--accent-primary);
+    font-size: 1.8rem;
+}
+
+.sidebar-nav{
+    flex: 1;
+    padding: 20px 0;
+}
+
+.sidebar-nav ul{
+    list-style: none;
+}
+
+.nav-item{
+    margin-bottom: 4px;
+}
+
+.nav-item a{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+    border-left: 3px solid transparent;
+}
+
+.nav-item a:hover{
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.nav-item.active a{
+    background: var(--bg-tertiary);
+    color: var(--accent-primary);
+    border-left-color: var(--accent-primary);
+}
+
+.nav-item i{
+    width: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.sidebar-footer{
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-avatar{
+    width: 40px;
+    height: 40px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    padding: 20px;
+    color: white;
+    font-size: 1.1rem;
 }
+
+.user-details{
+    flex: 1;
+}
+
+.username{
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+.balance{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+.balance i{
+    color: var(--warning);
+}
+
+.main-content{
+    margin-left: 280px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    flex: 1;
+}
+
+@media (max-width: 1024px){
+    .main-content{
+        margin-left: 0;
+    }
+
+    .sidebar{
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active{
+        transform: translateX(0);
+    }
+
+    .mobile-menu-toggle{
+        display: block;
+    }
+}
+
+/*
 
 .h1{
     font-size: 3rem;
@@ -93,6 +239,7 @@ body{
     width: 8px;
     height: 8px;
     border-radius: 50%;
+    background-color: var(--accent-primary);
     animation: pulse 1.5s ease-in-out infinite;
 }
 
@@ -115,13 +262,7 @@ body{
     }
 }
 
-.main-content{
-    margin-left: 280px;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    flex: 1;
-}
+
 
 .dashboard{
     background: white;
@@ -746,3 +887,4 @@ body{
     color: #9ba5a6;
     margin-top: 5px;
 }
+commenting everything til i get the redesign sorted*/

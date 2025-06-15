@@ -7,56 +7,92 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel=""stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-    <div class="mobile-menu-toggle">
-      <i class="fas fa-bars"></i>
-    </div>
   </head>
   <body>
+
     <div class="app-container">
-      <h1>ScrobbleX</h1>
-      <p>Last.fm Stock Exchange</p>
-      <div class="loading-dots">
-        <div class="dot"></div>
-        <div class="dot"></div>
-        <div class="dot"></div>
+
+      <div class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
       </div>
-      </div>
+
       <aside class="sidebar">
         <div class="sidebar-header">
           <div class="logo">
-            <i class="fas fa-chart-line"></i>
-            <span>LFSE</span>
+            <i class="fa-brands fa-lastfm"></i>
+            <span>ScrobbleX</span>
           </div>
         </div>
+
         <nav class="sidebar-nav">
           <ul>
-            <li class="active">
-              <a href="#">
-                <i class="fas fa-home"></i>Dashboard </a>
+            <li class="nav-item active">
+              <a href="#" data-page="dashboard">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+              </a>
             </li>
-            <li>
-              <a href="#">
-                <i class="fas fa-chart-line"></i> Market </a>
+            <li class="nav-item">
+              <a href="#" data-page="market">
+                <i class="fas fa-store"></i>
+                <span>Market</span>
+              </a>
             </li>
-            <li>
-              <a href="#">
-                <i class="fas fa-chart-pie"></i> Portfolio </a>
+            <li class="nav-item">
+              <a href="#" data-page="portfolio">
+                <i class="fas fa-briefcase"></i>
+                <span>Portfolio</span>
+              </a>
             </li>
-            <li>
-              <a href="#">
-                <i class="fas fa-trophy"></i> Leaderboard </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fas fa-history"></i> History </a>
-            </li>
-            <li>
-              <a href="#">
-                <i class="fas fa-users"></i> Community </a>
+            <li class="nav-item">
+              <a href="#" data-page="leaderboard">
+                <i class="fas fa-trophy"></i>
+                <span>Leaderboard</span>
+              </a>
             </li>
           </ul>
         </nav>
+
         <div class="sidebar-footer">
+          <div class="user-info">
+            <div class="user-avatar">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="user-details">
+              <div class="username">mus1cluvr</div>
+              <div class="balance">
+                <i class="fas fa-coins"></i>
+                <span>10000 SC</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <h1>Dashboard Content Coming Soon (hopefully)</h1>
+      </main>
+    </div>
+    <script src="js/main.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="sidebar-footer">
           <div class="user-info">
             <div class="avatar">DS</div>
             <div class="user-details">
@@ -308,4 +344,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/main.js"></script>
   </body>
-</html>
+</html>-->
+
+<!--commenting all my old code so i can work on redesigning everything-->
