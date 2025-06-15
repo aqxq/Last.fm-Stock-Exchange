@@ -211,3 +211,5 @@ function populateTransactions(){
         transactionsContainer.appendChild(transactionItem);
     });
 }
+
+console.log('loaded successfully!');
