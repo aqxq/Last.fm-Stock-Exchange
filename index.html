@@ -6,7 +6,7 @@
     <title>ScrobbleX</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel=""stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
   </head>
   <body>
 
@@ -70,8 +70,97 @@
       </aside>
 
       <main class="main-content">
-        <h1>Dashboard Content Coming Soon (hopefully)</h1>
+
+        <header class="header">
+          <div class="search-container">
+            <div class="search-bar">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Search for stocks..." id="searchInput">
+            </div>
+          </div>
+
+          <div class="header-actions">
+            <button class="btn btn-primary">
+              <i class="fas fa-plus"></i>
+              <span>Add Funds</span>
+            </button>
+
+            <div class="user-dropdown">
+              <div class="user-avatar-small">
+                <i class="fas fa-user"></i>
+              </div>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+          </div>
+        </header>
+
+        <div class="page-content">
+          <div class="page-header">
+            <h1>Market Dashboard</h1>
+            <p class="page-subtitle">Track your favorite stocks and market trends</p>
+          </div>
+
+          <div class="market-overview">
+            <div class="overview-card">
+              <div class="card-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="card-content">
+                <h3>Market Cap</h3>
+                <div class="card-value">$2.4B</div>
+                <div class="card-change positive">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>+3.2%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="overview-card">
+              <div class="card-icon">
+                <i class="fas fa-volume-high"></i>
+              </div>
+              <div class="card-content">
+                <h3>24h Volume</h3>
+                <div class="card-value">$156M</div>
+                <div class="card-change positive">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>+8.7%</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="overview-card">
+              <div class="card-icon">
+                <i class="fas fa-fire"></i>
+              </div>
+              <div class="card-content">
+                <h3>Top Gainer</h3>
+                <div class="card-value">$TAYLOR</div>
+                <div class="card-change positive">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>+15.3%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="overview-card">
+            <div class="card-icon">
+              <i class="fas fa-arrow-trend-down"></i>
+            </div>
+            <div class="card-content">
+              <h3>Top Loser</h3>
+              <div class="card-value">$DRAKE</div>
+              <div class="card-change negative">
+                <i class="fas fa-arrow-down"></i>
+                <span>-7.2%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
       </main>
+
+
     </div>
     <script src="js/main.js"></script>
   </body>
@@ -92,96 +181,7 @@
 
 
 
-<!--<div class="sidebar-footer">
-          <div class="user-info">
-            <div class="avatar">DS</div>
-            <div class="user-details">
-              <div class="username">Dev Suraj</div>
-              <div class="balance">$13,376.90</div>
-            </div>
-          </div>
-        </div>
-      </aside>
-      <main class="main-content">
-        <header class="header">
-          <div class="search-bar">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search for stocks...">
-          </div>
-          <div class="header-actions">
-            <button class="btn btn-primary">
-              <i class="fas fa-plus"></i> Add Funds </button>
-            <div class="user-dropdown">
-              <img src="https://devnandan.me/images/profile.jpg" width="50" height="50" alt="User" class="user-avatar">
-              <i class="fas fa-chevron-down"></i>
-            </div>
-          </div>
-        </header>
-        <div class="dashboard">
-          <h2 class="section-title">Market Dashboard</h2>
-          <div class="market-overview">
-            <div class="card">
-              <div class="card-header">
-                <h3>Market Cap</h3>
-                <p class="text-muted">Total market value</p>
-              </div>
-              <div class="card-content">
-                <div class="metric">
-                  <span class="metric-value">$1.24B</span>
-                  <span class="metric-icon positive">
-                    <i class="fas fa-chart-line"></i>
-                  </span>
-                </div>
-                <p class="metric-change positive">+2.5% from last week</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h3>Trading Volume</h3>
-                <p class="text-muted">24 hour volume</p>
-              </div>
-              <div class="card-content">
-                <div class="metric">
-                  <span class="metric-value">$123.4M</span>
-                  <span class="metric-icon positive">
-                    <i class="fas fa-chart-bar"></i>
-                  </span>
-                </div>
-                <p class="metric-change positive">+12.3% from yesterday</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h3>Top Gainer</h3>
-                <p class="text-muted">Best performing stock</p>
-              </div>
-              <div class="card-content">
-                <div class="metric">
-                  <span class="metric-value">$KLAMAR</span>
-                  <span class="metric-icon positive">
-                    <i class="fas fa-arrow-up"></i>
-                  </span>
-                </div>
-                <p class="metric-change positive">+12.4% today</p>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-header">
-                <h3>Top Loser</h3>
-                <p class="text-muted">Worst performing stock</p>
-              </div>
-              <div class="card-content">
-                <div class="metric">
-                  <span class="metric-value">$DRAKE</span>
-                  <span class="metric-icon negative">
-                    <i class="fas fa-arrow-down"></i>
-                  </span>
-                </div>
-                <p class="metric-change negative">-8.3% today</p>
-              </div>
-            </div>
-        </div>
-                  <div class="tabs">
+<!--<div class="tabs">
             <div class="tab active" data-tab="overview">Overview</div>
             <div class="tab" data-tab="trending">Trending</div>
             <div class="tab" data-tab="portfolio">My Portfolio</div>
