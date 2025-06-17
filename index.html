@@ -183,6 +183,35 @@
                 <h2>Trending Artists</h2>
                 <p>Most active stocks in the last 24 hours</p>
               </div>
+              
+              <div class="featured-stock">
+                <div class="stock-chart-container">
+                  <div class="chart-header">
+                    <h3>$KLAMAR</h3>
+                    <p class="stock-name">Kendrick Lamar</p>
+                    <div class="current-prices">
+                      <span class="price">$24.35</span>
+                      <span class="change positive">
+                        <i class="fas fa-arrow-up"></i>
+                        +5.3% (+1.23)
+                      </span>
+                    </div>
+                  </div>
+                  <div class="chart-controls">
+                    <div class="time-range">
+                      <button class="range-btn" data-range="1D">1D</button>
+                      <button class="range-btn active" data-range="1W">1W</button>
+                      <button class="range-btn" data-range="1M">1M</button>
+                      <button class="range-btn" data-range="3M">3M</button>
+                    </div>
+                  </div>
+
+                  <div class="chart-wrapper">
+                    <canvas id="stockChart"></canvas>
+                  </div>
+                </div>
+              </div>
+              
               <div class="trending-stocks"> </div>
             </div>
 
