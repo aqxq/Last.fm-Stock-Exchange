@@ -28,8 +28,8 @@ class ScrobbleX {
         });
     }
 
-    switchTab(Tab){
-        document.querySelectorAll('.tab-btn').forEach(btn =>{
+    switchTab(tab){
+        document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.classList.remove('active');
         });
 
@@ -64,6 +64,7 @@ class ScrobbleX {
         }
     }
 }
+
 const app = new ScrobbleX();
 
 
