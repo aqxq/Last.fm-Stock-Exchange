@@ -1,3 +1,74 @@
+class ScrobbleX {
+    constructor() {
+        this.currentTab = 'trending';
+        this.init();
+    }
+
+    init() {
+        
+        this.setupEventListeners();
+        this.setupTabs();
+        console.log("init succesfully!");
+    }
+
+    setupEventListeners() {
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('dom loaded');
+        });
+    }
+
+    setupTabs(){
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+              const tab = btn.getAttribute('data-tab');
+              this.switchTab(tab);
+
+        });
+        });
+    }
+
+    switchTab(Tab){
+        document.querySelectorAll('.tab-btn').forEach(btn =>{
+            btn.classList.remove('active');
+        });
+
+        document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+
+        document.querySelectorAll('.tab-pane').forEach(pane => {
+            pane.classList.remove('active');
+        });
+
+        document.getElementById(tab).classList.add('active');
+
+        this.currentTab = tab;
+        console.log('swiched to tab:', tab);
+
+        this.loadTabContent(tab);
+    }
+
+    loadTabContent(tab){
+        switch(tab) {
+            case 'trending':
+                console.log('loading trending stocks');
+                break;
+            case 'portfolio':
+                console.log('loafing portfolio');
+                break;
+            case 'watchlist':
+                console.log('loading watchlist');
+                break;
+            case 'news':
+                console.log('loading news');
+                break;
+        }
+    }
+}
+const app = new ScrobbleX();
+
+
+
+/* commenting all this out for now
 //tabs
 document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.mobile-menu-toggle');
@@ -213,3 +284,4 @@ function populateTransactions(){
 }
 
 console.log('loaded successfully!');
+*/

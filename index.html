@@ -141,8 +141,7 @@
                   <span>+15.3%</span>
               </div>
             </div>
-          </div>
-
+            </div>
           <div class="overview-card">
             <div class="card-icon">
               <i class="fas fa-arrow-trend-down"></i>
@@ -157,6 +156,63 @@
             </div>
           </div>
         </div>
+
+        <div class="dashboard-tabs">
+          <div class="tab-nav">
+            <button class="tab-btn active" data-tab="trending">
+              <i class="fas fa-fire"></i>
+              <span>Trending</span>
+            </button>
+            <button class="tab-btn" data-tab="portfolio">
+              <i class="fas fa-briefcase"></i>
+              <span>Portfilio</span>
+            </button>
+            <button class="tab-btn" data-tab="watchlist">
+              <i class="fas fa-eye"></i>
+              <span>Watchlist</span>
+            </button>
+            <button class="tab-btn" data-tab="news">
+              <i class="fas fa-newspaper"></i>
+              <span>News</span>
+            </button>
+          </div>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="trending">
+              <div class="section-header">
+                <h2>Trending Artists</h2>
+                <p>Most active stocks in the last 24 hours</p>
+              </div>
+              <div class="trending-stocks"> </div>
+            </div>
+
+            <div class="tab-pane" id="portfolio">
+              <div class="section-header">
+                <h2>Portfolio Overview</h2>
+                <div class="portfolio-summary">
+                  <span class="value">$12,345.67</span>
+                  <span class="change positive">$1,234.56 (11.0%)</span>
+                </div>
+              </div>
+              <div class="portfolio-holdings" id="portfolioHoldings"></div>
+            </div>
+
+            <div class="tab-pane" id="watchlist">
+              <div class="section-header">
+                <h2>My Watchlist</h2>
+                <p>Stocks you are currently watching</p>
+              </div>
+              <div class="watchlist-grid" id="watchlistItems"></div>
+            </div>
+
+            <div class="tab-pane" id="news">
+              <div class="section-header">
+                <h2>Market News</h2>
+                <p>Latest updates from the music industry</p>
+              </div>
+              <div class="news-feed" id="newsFeed"></div>
+            </div>
+          </div>
         </div>
       </main>
 
@@ -181,60 +237,7 @@
 
 
 
-<!--<div class="tabs">
-            <div class="tab active" data-tab="overview">Overview</div>
-            <div class="tab" data-tab="trending">Trending</div>
-            <div class="tab" data-tab="portfolio">My Portfolio</div>
-            <div class="tab" data-tab="transactions">Transactions</div>
-          </div>
-          <div class="tab-content">
-            <div class="tab-pane active" id="overview">
-                <div class="featured-section">
-                    <div class="card-header">
-                        <h3>Featured Stock: $KLAMAR</h3>
-                        <p class="text-muted">Kendrick Lamar - Current Price: $24.35 (+5.2%)</p>
-                    </div>
-                    <div class="card-content">
-                        <div class="chart-container">
-                            <canvas id="stockChart"></canvas>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <button class="btn btn-outline">View Details</button>
-                        <button class="btn btn-primary">Trade Now</button>
-                    </div>
-                </div>
-                <div class="market-news card">
-                    <div class="card-header">
-                        <h3>Market News</h3>
-                        <p class="text-muted">Latest updates from the music indudtry</p>
-                    </div>
-                    <div class="card-content">
-                        <div class="news-item positive">
-                            <p class="news-title">Kendrick Lamar tour cause $KLAMAR to surge 5%</p>
-                            <p class="news-time">2 hours aago</p>
-                        </div>
-                        <div class="news-item negative">
-                            <p class="news-title">Playboi Carti album delay sends $CARTI down 8%</p>
-                            <p class="news-time">5 hours ago</p>
-                        </div>
-                        <div class="news-item">
-                            <p class="news-title">New Billie Eilish singe stabilizes $BILLIE</p>
-                            <p class="news-time">Yesterday</p>
-                        </div>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="link">View all news</a>
-                    </div>
-                </div>
-            </div>
-            <div class="tab-pane" id="trending">
-                <div class="card">
-                    <div class="card-header">
-                        <h3>Trending Stocks</h3>
-                        <p class="text-muted">Most active stocks in the last 24 hours</p>
-                    </div>
-                    <div class="card-content">
+<!--<div class="card-content">
                         <div class="trending-stocks">
 
                         </div>
@@ -346,4 +349,5 @@
   </body>
 </html>-->
 
+<!--commenting all my old code so i can work on redesigning everything-->
 <!--commenting all my old code so i can work on redesigning everything-->
