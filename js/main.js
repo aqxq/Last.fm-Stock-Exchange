@@ -36,13 +36,13 @@ class ScrobbleX {
     setupChart(){
         const rangeBtns = document.querySelectorAll('.range-btn');
         rangeBtns.forEach(btn => {
-            btn.addEventListener('click'), () => {
+            btn.addEventListener('click', () => {
                 const range = btn.getAttribute('data-range');
                 this.updateChartRange(range);
 
                 rangeBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
-            }
+            });
         });
     }
 
