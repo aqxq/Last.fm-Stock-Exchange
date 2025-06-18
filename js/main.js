@@ -51,7 +51,7 @@ class ScrobbleX {
         if (!ctx) return;
 
         const data = this.generateChartData('1W');
-        this.stockChart = new CharacterData(ctx, {
+        this.stockChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: data.labels,
