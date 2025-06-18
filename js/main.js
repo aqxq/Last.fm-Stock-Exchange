@@ -1,6 +1,7 @@
 class ScrobbleX {
     constructor() {
         this.currentTab = 'trending';
+        this.stockChart = null;
         this.init();
     }
 
@@ -8,12 +9,16 @@ class ScrobbleX {
         
         this.setupEventListeners();
         this.setupTabs();
+        this.setupChart();
         console.log("init succesfully!");
     }
 
     setupEventListeners() {
         document.addEventListener('DOMContentLoaded', () => {
             console.log('dom loaded');
+            setTimeout(() => {
+                this.createStockChart();
+            }, 100)
         });
     }
 
@@ -26,6 +31,167 @@ class ScrobbleX {
 
         });
         });
+    }
+
+    setupChart(){
+        const rangeBtns = document.querySelectorAll('.range-btn');
+        rangeBtns.forEach(btn => {
+            btn.addEventListener('click'), () => {
+                const range = btn.getAttribute('data-range');
+                this.updateChartRange(range);
+
+                rangeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    createStockChart(){
+        const ctx = document.getElementById('stockChart');
+        if (!ctx) return;
+
+        const data = this.generateChartData('1W');
+        this.stockChart = new CharacterData(ctx, {
+            type: 'line',
+            data: {
+                labels: data.labels,
+                datasets: [{
+                    label: 'KLAMAR Price',
+                    data: data.prices,
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0,
+                    pointHoverRadius: 6,
+                    pointHoverBackgroundColor: '#10b981',
+                    pointHoverBorderColor: '#ffffff',
+                    pointHoverBorderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        mode: 'index',
+                        intersect: false,
+                        backgroundColor: 'rgba(30, 30, 46, 0.9)',
+                        titleColor: '#ffffff',
+                        bodyColor: '#b8b8d1',
+                        borderColor: '#2d3748',
+                        borderWidth: 1,
+                        cornerRadius: 8,
+                        displayColors: false,
+                        callbacks: {
+                            title: function(context){
+                                return context[0].label;
+                            },
+                            label: function(context){
+                                return `$${context.parsed.y.toFixed(2)}`;
+                            }
+                        }
+                    
+                    }
+                },
+                scales: {
+                    x: {
+                        display: true,
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            color: '#6c7293',
+                            font: {
+                                size: 11
+                            }
+                        }
+                    },
+                    y: {
+                        display: true,
+                        position: 'right',
+                        grid: {
+                            color: 'rgba(45, 55, 72, 0.3)',
+                            drawBorder: false
+                        },
+                        ticks: {
+                            color: '#6c7293',
+                            font: {
+                                size: 11
+                        },
+                        callback: function(value) {
+                            return '$' + value.toFixed(2);
+                        }
+                    }
+                }
+            },
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            }
+        }
+        });
+
+        console.log('stock chart created');
+    }
+
+    generateChartData(range) {
+        const today = new Date();
+        const data = {labels : [], prices: []};
+        let days, basePrice = 24.35;
+
+        switch(range) {
+            case '1D':
+                days = 1;
+                break;
+            case '1W':
+                days = 7;
+                break;
+            case '1M':
+                days = 30;
+                break;
+            case '3M':
+                days = 90;
+                break;
+            default:
+                days = 7;
+        }
+        for(let i = days; i >= 0; i--){
+            const date = new Date();
+            date.setDate(today.getDate() - i);
+
+            if(range === '1D'){
+                data.labels.push(date.toLocaleTimeString('en-US', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                }));
+            } else {
+                data.labels.push(date.toLocaleDateString('en-US', {
+                    month: 'short',
+                    day: 'numeric'
+                }));
+            }
+
+            const volatility = 0.02
+            const change= (Math.random() - 0.5) * volatility;
+            basePrice = basePrice * (1 + change);
+            data.prices.push(basePrice.toFixed(2));
+        }
+        return data;
+    }
+
+    updateChartRange(range) {
+        if (!this.stockChart) return;
+        const newData = this.generateChartData(range);
+        this.stockChart.data.labels = newData.labels;
+        this.stockChart.data.datasets[0].data = newData.prices;
+        this.stockChart.update('active');
+
+        console.log('chart updated to range:', range);
     }
 
     switchTab(tab){
@@ -66,6 +232,30 @@ class ScrobbleX {
 }
 
 const app = new ScrobbleX();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

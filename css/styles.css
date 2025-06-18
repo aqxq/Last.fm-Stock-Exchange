@@ -249,6 +249,34 @@ body{
         justify-content: flex-start;
         padding: 12px 20px;
     }
+
+    .chart-header{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .chart-controls{
+        align-items: flex-start;
+        width: 100%;   
+    }
+
+    .time-range{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .current-price{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .chart-wrapper{
+        padding: 16px;
+        height: 250px;
+    }
+    
 }
 
 @media (max-width: 480px) {
@@ -557,6 +585,107 @@ body{
     font-size: 1rem;
     font-weight: 500;
 }
+
+.featured-stock{
+    margin-bottom: 32px;
+}
+
+.stock-chart-container{
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.chart-header{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stock-info h3{
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.stock-name{
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 17px;
+}
+
+.current-price{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.current-price .price{
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.current-price .change{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.chart-controls{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.time-range{
+    display: flex;
+    gap: 4px;
+    background: var(--bg-primary);
+    border-radius: var(--radius-md);
+    padding: 4px;
+}
+
+.range-btn{
+    padding: 6px 12px;
+    background: transparent;
+    border: none;
+    border-radius: var(--radius-sm);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.range-btn:hover{
+    background: var(--accent-primary);
+    color: white;
+}
+
+.range-btn.active{
+    background: var(--accent-primary);
+    color: white;
+}
+
+.chart-wrapper{
+    padding: 20px 40px;
+    position: relative;
+    height: 300px;
+}
+
+#stock-chart{
+    width: 100% !important;
+    height: 100% ! important;
+}
+
+
 /*
 
 .h1{
