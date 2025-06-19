@@ -2,7 +2,7 @@ class ScrobbleX {
     constructor() {
         this.currentTab = 'trending';
         this.stockChart = null;
-        this.stockData = [];
+        this.stockData = this.generateMockStocks();
         this.init();
     }
 
@@ -12,6 +12,7 @@ class ScrobbleX {
         this.setupTabs();
         this.setupChart();
         this.setupMobileMenu();
+        this.setupSearch();
         console.log("init succesfully!");
     }
 
@@ -34,6 +35,92 @@ class ScrobbleX {
 
             });
         });
+    }
+
+    setupSearch() {
+        const searchInput = document.getElementById('searchInput');
+        let searchTimeout;
+
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                this.performSearch(e.target.value);
+            }, 300);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                this.clearSearchResults();
+            }
+        });
+    }
+
+    performSearch(query) {
+        if (!query.trim()) {
+            this.clearSearchResults();
+            return;
+        }
+
+        const results = this.stockData.filter(stock =>
+            stock.name.toLowerCase().includes(query.toLowerCase()) ||
+            stock.symbol.toLowerCase().includes(query.toLowerCase())
+        );
+
+        this.displaySearchResults(results, query);
+    }
+
+    displaySearchResults(results, query) {
+        let dropdown = document.getElementById('searchDropdown');
+        if (!dropdown) {
+            dropdown = document.createElement('div');
+            dropdown.id = 'searchDropdown';
+            dropdown.className = 'search-dropdown';
+            document.querySelector('.search-container').appendChild(dropdown);
+        }
+
+        if (results.length === 0) {
+            dropdown.innerHTML = `
+            <div class="search-result-item no-results">
+                <i class="fas fa-search"></i>
+                <span>No results found for "${query}"</span>
+            </div>
+        `;
+        } else {
+            dropdown.innerHTML = results.map(stock => `
+            <div class="search-result-item" onclick="app.selectSearchResult('${stock.symbol}')">
+                <div class="search-result-avatar">${stock.symbol.substring(0, 2)}</div>
+                <div class="search-result-info">
+                    <div class="search-result-name">${stock.name}</div>
+                    <div class="search-result-symbol">$${stock.symbol}</div>
+                </div>
+                <div class="search-result-price">
+                    <div class="price">$${stock.price.toFixed(2)}</div>
+                    <div class="change ${stock.change >= 0 ? 'positive' : 'negative'}">
+                        ${this.formatPercent(stock.change)}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        }
+
+        dropdown.style.display = 'block';
+    }
+    formatPercent(value) {
+        return `${value >= 0 ? '+' : ''}${value.toFixed(1)}%`;
+    }
+
+
+    selectSearchResult(symbol) {
+        this.clearSearchResults();
+        document.getElementById('searchInput').value = '';
+        this.openStockDetails(symbol);
+    }
+
+    clearSearchResults() {
+        const dropdown = document.getElementById('searchDropdown');
+        if (dropdown) {
+            dropdown.style.display = 'none';
+        }
     }
 
     setupChart() {
