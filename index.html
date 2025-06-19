@@ -1,147 +1,149 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ScrobbleX</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
-  </head>
-  <body>
 
-    <div class="app-container">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScrobbleX</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+</head>
 
-      <div class="mobile-menu-toggle">
-        <i class="fas fa-bars"></i>
+<body>
+
+  <div class="app-container">
+
+    <div class="mobile-menu-toggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fa-brands fa-lastfm"></i>
+          <span>ScrobbleX</span>
+        </div>
       </div>
 
-      <aside class="sidebar">
-        <div class="sidebar-header">
-          <div class="logo">
-            <i class="fa-brands fa-lastfm"></i>
-            <span>ScrobbleX</span>
+      <nav class="sidebar-nav">
+        <ul>
+          <li class="nav-item active">
+            <a href="#" data-page="dashboard">
+              <i class="fas fa-chart-line"></i>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" data-page="market">
+              <i class="fas fa-store"></i>
+              <span>Market</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" data-page="portfolio">
+              <i class="fas fa-briefcase"></i>
+              <span>Portfolio</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#" data-page="leaderboard">
+              <i class="fas fa-trophy"></i>
+              <span>Leaderboard</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="user-info">
+          <div class="user-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="user-details">
+            <div class="username">mus1cluvr</div>
+            <div class="balance">
+              <i class="fas fa-coins"></i>
+              <span>10000 SC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+
+      <header class="header">
+        <div class="search-container">
+          <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search for stocks..." id="searchInput">
           </div>
         </div>
 
-        <nav class="sidebar-nav">
-          <ul>
-            <li class="nav-item active">
-              <a href="#" data-page="dashboard">
-                <i class="fas fa-chart-line"></i>
-                <span>Dashboard</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" data-page="market">
-                <i class="fas fa-store"></i>
-                <span>Market</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" data-page="portfolio">
-                <i class="fas fa-briefcase"></i>
-                <span>Portfolio</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="#" data-page="leaderboard">
-                <i class="fas fa-trophy"></i>
-                <span>Leaderboard</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <div class="header-actions">
+          <button class="btn btn-primary">
+            <i class="fas fa-plus"></i>
+            <span>Add Funds</span>
+          </button>
 
-        <div class="sidebar-footer">
-          <div class="user-info">
-            <div class="user-avatar">
+          <div class="user-dropdown">
+            <div class="user-avatar-small">
               <i class="fas fa-user"></i>
             </div>
-            <div class="user-details">
-              <div class="username">mus1cluvr</div>
-              <div class="balance">
-                <i class="fas fa-coins"></i>
-                <span>10000 SC</span>
-              </div>
-            </div>
+            <i class="fas fa-chevron-down"></i>
           </div>
         </div>
-      </aside>
+      </header>
 
-      <main class="main-content">
+      <div class="page-content">
+        <div class="page-header">
+          <h1>Market Dashboard</h1>
+          <p class="page-subtitle">Track your favorite stocks and market trends</p>
+        </div>
 
-        <header class="header">
-          <div class="search-container">
-            <div class="search-bar">
-              <i class="fas fa-search"></i>
-              <input type="text" placeholder="Search for stocks..." id="searchInput">
+        <div class="market-overview">
+          <div class="overview-card">
+            <div class="card-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="card-content">
+              <h3>Market Cap</h3>
+              <div class="card-value">$2.4B</div>
+              <div class="card-change positive">
+                <i class="fas fa-arrow-up"></i>
+                <span>+3.2%</span>
+              </div>
             </div>
           </div>
 
-          <div class="header-actions">
-            <button class="btn btn-primary">
-              <i class="fas fa-plus"></i>
-              <span>Add Funds</span>
-            </button>
-
-            <div class="user-dropdown">
-              <div class="user-avatar-small">
-                <i class="fas fa-user"></i>
+          <div class="overview-card">
+            <div class="card-icon">
+              <i class="fas fa-volume-high"></i>
+            </div>
+            <div class="card-content">
+              <h3>24h Volume</h3>
+              <div class="card-value">$156M</div>
+              <div class="card-change positive">
+                <i class="fas fa-arrow-up"></i>
+                <span>+8.7%</span>
               </div>
-              <i class="fas fa-chevron-down"></i>
             </div>
           </div>
-        </header>
 
-        <div class="page-content">
-          <div class="page-header">
-            <h1>Market Dashboard</h1>
-            <p class="page-subtitle">Track your favorite stocks and market trends</p>
+          <div class="overview-card">
+            <div class="card-icon">
+              <i class="fas fa-fire"></i>
+            </div>
+            <div class="card-content">
+              <h3>Top Gainer</h3>
+              <div class="card-value">$TAYLOR</div>
+              <div class="card-change positive">
+                <i class="fas fa-arrow-up"></i>
+                <span>+15.3%</span>
+              </div>
+            </div>
           </div>
-
-          <div class="market-overview">
-            <div class="overview-card">
-              <div class="card-icon">
-                <i class="fas fa-chart-line"></i>
-              </div>
-              <div class="card-content">
-                <h3>Market Cap</h3>
-                <div class="card-value">$2.4B</div>
-                <div class="card-change positive">
-                  <i class="fas fa-arrow-up"></i>
-                  <span>+3.2%</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="overview-card">
-              <div class="card-icon">
-                <i class="fas fa-volume-high"></i>
-              </div>
-              <div class="card-content">
-                <h3>24h Volume</h3>
-                <div class="card-value">$156M</div>
-                <div class="card-change positive">
-                  <i class="fas fa-arrow-up"></i>
-                  <span>+8.7%</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="overview-card">
-              <div class="card-icon">
-                <i class="fas fa-fire"></i>
-              </div>
-              <div class="card-content">
-                <h3>Top Gainer</h3>
-                <div class="card-value">$TAYLOR</div>
-                <div class="card-change positive">
-                  <i class="fas fa-arrow-up"></i>
-                  <span>+15.3%</span>
-              </div>
-            </div>
-            </div>
           <div class="overview-card">
             <div class="card-icon">
               <i class="fas fa-arrow-trend-down"></i>
@@ -183,7 +185,7 @@
                 <h2>Trending Artists</h2>
                 <p>Most active stocks in the last 24 hours</p>
               </div>
-              
+
               <div class="featured-stock">
                 <div class="stock-chart-container">
                   <div class="chart-header">
@@ -211,7 +213,7 @@
                   </div>
                 </div>
               </div>
-              
+
               <div class="trending-stocks"> </div>
             </div>
 
@@ -243,13 +245,14 @@
             </div>
           </div>
         </div>
-      </main>
+    </main>
 
 
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
 </html>
 
 

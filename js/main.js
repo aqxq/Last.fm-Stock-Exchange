@@ -2,11 +2,12 @@ class ScrobbleX {
     constructor() {
         this.currentTab = 'trending';
         this.stockChart = null;
+        this.stockData = [];
         this.init();
     }
 
     init() {
-        
+
         this.setupEventListeners();
         this.setupTabs();
         this.setupChart();
@@ -18,22 +19,23 @@ class ScrobbleX {
             console.log('dom loaded');
             setTimeout(() => {
                 this.createStockChart();
+                this.renderTrendingStocks();
             }, 100)
         });
     }
 
-    setupTabs(){
+    setupTabs() {
         const tabBtns = document.querySelectorAll('.tab-btn');
         tabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-              const tab = btn.getAttribute('data-tab');
-              this.switchTab(tab);
+                const tab = btn.getAttribute('data-tab');
+                this.switchTab(tab);
 
-        });
+            });
         });
     }
 
-    setupChart(){
+    setupChart() {
         const rangeBtns = document.querySelectorAll('.range-btn');
         rangeBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -46,7 +48,7 @@ class ScrobbleX {
         });
     }
 
-    createStockChart(){
+    createStockChart() {
         const ctx = document.getElementById('stockChart');
         if (!ctx) return;
 
@@ -88,14 +90,14 @@ class ScrobbleX {
                         cornerRadius: 8,
                         displayColors: false,
                         callbacks: {
-                            title: function(context){
+                            title: function (context) {
                                 return context[0].label;
                             },
-                            label: function(context){
+                            label: function (context) {
                                 return `$${context.parsed.y.toFixed(2)}`;
                             }
                         }
-                    
+
                     }
                 },
                 scales: {
@@ -122,18 +124,18 @@ class ScrobbleX {
                             color: '#6c7293',
                             font: {
                                 size: 11
-                        },
-                        callback: function(value) {
-                            return '$' + value.toFixed(2);
+                            },
+                            callback: function (value) {
+                                return '$' + value.toFixed(2);
+                            }
                         }
                     }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
                 }
-            },
-            interaction: {
-                intersect: false,
-                mode: 'index'
             }
-        }
         });
 
         console.log('stock chart created');
@@ -141,10 +143,10 @@ class ScrobbleX {
 
     generateChartData(range) {
         const today = new Date();
-        const data = {labels : [], prices: []};
+        const data = { labels: [], prices: [] };
         let days, basePrice = 24.35;
 
-        switch(range) {
+        switch (range) {
             case '1D':
                 days = 1;
                 break;
@@ -160,11 +162,11 @@ class ScrobbleX {
             default:
                 days = 7;
         }
-        for(let i = days; i >= 0; i--){
+        for (let i = days; i >= 0; i--) {
             const date = new Date();
             date.setDate(today.getDate() - i);
 
-            if(range === '1D'){
+            if (range === '1D') {
                 data.labels.push(date.toLocaleTimeString('en-US', {
                     hour: '2-digit',
                     minute: '2-digit'
@@ -177,11 +179,88 @@ class ScrobbleX {
             }
 
             const volatility = 0.02
-            const change= (Math.random() - 0.5) * volatility;
+            const change = (Math.random() - 0.5) * volatility;
             basePrice = basePrice * (1 + change);
             data.prices.push(basePrice.toFixed(2));
         }
         return data;
+    }
+
+    generateMockStocks() {
+        const artists = [
+            { symbol: 'TAYLOR', name: 'Taylor Swift', genre: 'Pop' },
+            { symbol: 'DRAKE', name: 'Drake', genre: 'Hip-Hop' },
+            { symbol: 'KLAMAR', name: 'Kendrick Lamar', genre: 'Hip-Hop' },
+            { symbol: 'BILLIE', name: 'Billie Eilish', genre: 'Alternative' },
+            { symbol: 'WEEKND', name: 'The Weeknd', genre: 'R&B' },
+            { symbol: 'ARIANA', name: 'Ariana Grande', genre: 'Pop' },
+            { symbol: 'POSTY', name: 'Post Malone', genre: 'Hip-Hop' },
+            { symbol: 'DUALIPA', name: 'Dua Lipa', genre: 'Pop' },
+            { symbol: 'SHEERAN', name: 'Ed Sheeran', genre: 'Pop' },
+            { symbol: 'ADELE', name: 'Adele', genre: 'Soul' }
+        ];
+
+        return artists.map(artist => ({
+            ...artist,
+            price: 15 + Math.random() * 30,
+            change: (Math.random() - 0.5) * 20,
+            volume: Math.floor(Math.random() * 5000000) + 1000000,
+            marketCap: Math.floor(Math.random() * 1000000000) + 100000000
+        }));
+    }
+
+    renderTrendingStocks() {
+        const container = document.getElementById('trendingStocks');
+        if (!container) return;
+
+        container.innerHTML = `
+        <div class="loading-state">
+            <div class="loading-spinner"></div>
+            <span>Loading trending stocks...</span>
+        </div>
+    `;
+
+        setTimeout(() => {
+            const stocks = this.generateMockStocks();
+            const trendingStocks = stocks.sort((a, b) => Math.abs(b.change) - Math.abs(a.change)).slice(0, 6);
+
+            container.innerHTML = trendingStocks.map(stock => `
+        <div class="stock-card" onclick="app.openStockModal('${stock.symbol}')">
+            <div class="stock-header">
+                <div class="stock-avatar">${stock.symbol.substring(0, 2)}</div>
+                <div class="stock-info">
+                    <h4>${stock.name}</h4>
+                    <div class="stock-symbol">$${stock.symbol}</div>
+                </div>
+            </div>
+            <div class="stock-metrics">
+                <div class="stock-price">$${stock.price.toFixed(2)}</div>
+                <div class="stock-change ${stock.change >= 0 ? 'positive' : 'negative'}">
+                    <i class="fas fa-arrow-${stock.change >= 0 ? 'up' : 'down'}"></i>
+                    ${stock.change >= 0 ? '+' : ''}${stock.change.toFixed(1)}%
+                </div>
+            </div>
+            <div class="stock-volume">
+                Volume: ${this.formatNumber(stock.volume)}
+            </div>
+        </div>
+    `).join('');
+
+            console.log('trending stocks rendered');
+        }, 800);
+    }
+
+    formatNumber(num) {
+        if (num >= 1000000) {
+            return (num / 1000000).toFixed(1) + 'M';
+        } else if (num >= 1000) {
+            return (num / 1000).toFixed(1) + 'K';
+        }
+        return num.toString();
+    }
+
+    openStockModal(symbol) {
+        console.log(`Opening modal for ${symbol}`);
     }
 
     updateChartRange(range) {
@@ -194,7 +273,7 @@ class ScrobbleX {
         console.log('chart updated to range:', range);
     }
 
-    switchTab(tab){
+    switchTab(tab) {
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.classList.remove('active');
         });
@@ -213,13 +292,13 @@ class ScrobbleX {
         this.loadTabContent(tab);
     }
 
-    loadTabContent(tab){
-        switch(tab) {
+    loadTabContent(tab) {
+        switch (tab) {
             case 'trending':
-                console.log('loading trending stocks');
+                this.renderTrendingStocks();
                 break;
             case 'portfolio':
-                console.log('loafing portfolio');
+                console.log('loading portfolio');
                 break;
             case 'watchlist':
                 console.log('loading watchlist');
@@ -229,6 +308,7 @@ class ScrobbleX {
                 break;
         }
     }
+
 }
 
 const app = new ScrobbleX();
