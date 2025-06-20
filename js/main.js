@@ -15,18 +15,15 @@ class ScrobbleX {
         this.setupMobileMenu();
         this.setupSearch();
         this.setupModal();
-        this.loadPage(this.currentPage);
         console.log("init succesfully!");
     }
 
     setupEventListeners() {
-        document.addEventListener('DOMContentLoaded', () => {
             console.log('dom loaded');
             setTimeout(() => {
                 this.createStockChart();
                 this.renderTrendingStocks();
-            }, 100)
-        });
+            }, 100);
     }
 
     setupTabs() {
@@ -90,7 +87,7 @@ class ScrobbleX {
         `;
         } else {
             dropdown.innerHTML = results.map(stock => `
-            <div class="search-result-item" onclick="app.selectSearchResult('${stock.symbol}')">
+            <div class="search-result-item" onclick="window.app.selectSearchResult('${stock.symbol}')">
                 <div class="search-result-avatar">${stock.symbol.substring(0, 2)}</div>
                 <div class="search-result-info">
                     <div class="search-result-name">${stock.name}</div>
@@ -316,7 +313,7 @@ class ScrobbleX {
             const trendingStocks = stocks.sort((a, b) => Math.abs(b.change) - Math.abs(a.change)).slice(0, 6);
 
             container.innerHTML = trendingStocks.map(stock => `
-        <div class="stock-card" onclick="app.openStockDetails('${stock.symbol}')">
+        <div class="stock-card" onclick="window.app.openStockDetails('${stock.symbol}')">
             <div class="stock-header">
                 <div class="stock-avatar">${stock.symbol.substring(0, 2)}</div>
                 <div class="stock-info">
@@ -351,7 +348,7 @@ class ScrobbleX {
     }
 
     openStockModal(symbol) {
-        console.log(`Opening modal for ${symbol}`);
+        this.openStockDetails(symbol);
     }
 
     updateChartRange(range) {
@@ -423,7 +420,10 @@ class ScrobbleX {
 
     setupModal() {
         const modal = document.getElementById('tradeModal');
+        if (!modal) return;
+
         const closeBtn = modal.querySelector('.modal-close');
+        if(!closeBtn) return;
 
         closeBtn.addEventListener('click', () => {
             this.closeModal();
@@ -444,15 +444,20 @@ class ScrobbleX {
         });
 
         const shareInput = document.getElementById('shareAmount');
+        if(shareInput) {
         shareInput.addEventListener('input', () => {
             this.updateTradeEstimate();
         });
+    }
 
         const executeBtn = document.getElementById('executeTradeBtn');
-        executeBtn.addEventListener('click', () => {
+        if(executeBtn) {
+            executeBtn.addEventListener('click', () => {
             this.executeTrade();
         });
     }
+}
+
 
     openStockDetails(symbol) {
         const stock = this.stockData.find(s => s.symbol === symbol);
@@ -508,4 +513,4 @@ class ScrobbleX {
     }
 }
 
-const app = new ScrobbleX();
+window.app = new ScrobbleX();
