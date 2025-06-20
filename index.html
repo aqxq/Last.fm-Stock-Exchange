@@ -251,6 +251,60 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/main.js"></script>
+
+  <div class="modal-overlay" id="tradeModal">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modalTitle">Trade Artist</h3>
+        <button class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="trade-tabs">
+          <button class="trade-tab active" data-trade="buy">
+            <i class="fas fa-arrow-up"></i>
+            <span>Buy</span>
+          </button>
+          <button class="trade-tab" data-trade="sell">
+            <i class="fas fa-arrow-down"></i>
+            <span>Sell</span>
+          </button>
+        </div>
+
+        <div class="trade-form">
+          <div class="form-group">
+            <label for="shareAmount">Number of Shares</label>
+            <input type="number" id="shareAmount" min="1" value="1">
+          </div>
+
+          <div class="price-info">
+            <div class="current-price">
+              <span>Current Price</span>
+              <span class="price" id="currentPrice">$24.35</span>
+            </div>
+          </div>
+
+          <div class="trade-summary">
+            <div class="summary-row">
+              <span>Estimated Total</span>
+              <span id="estimatedTotal">$24.35</span>
+            </div>
+            <div class="summary-row">
+              <span>Available Balance</span>
+              <span id="availableBalance">$10,000.00</span>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block" id="executeTradeBtn">
+            Buy Shares
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>

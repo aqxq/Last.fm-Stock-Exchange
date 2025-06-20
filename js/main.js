@@ -3,6 +3,7 @@ class ScrobbleX {
         this.currentTab = 'trending';
         this.stockChart = null;
         this.stockData = this.generateMockStocks();
+        this.userBalance = 10000;
         this.init();
     }
 
@@ -13,6 +14,8 @@ class ScrobbleX {
         this.setupChart();
         this.setupMobileMenu();
         this.setupSearch();
+        this.setupModal();
+        this.loadPage(this.currentPage);
         console.log("init succesfully!");
     }
 
@@ -313,7 +316,7 @@ class ScrobbleX {
             const trendingStocks = stocks.sort((a, b) => Math.abs(b.change) - Math.abs(a.change)).slice(0, 6);
 
             container.innerHTML = trendingStocks.map(stock => `
-        <div class="stock-card" onclick="app.openStockModal('${stock.symbol}')">
+        <div class="stock-card" onclick="app.openStockDetails('${stock.symbol}')">
             <div class="stock-header">
                 <div class="stock-avatar">${stock.symbol.substring(0, 2)}</div>
                 <div class="stock-info">
@@ -417,6 +420,92 @@ class ScrobbleX {
         });
     }
 
+
+    setupModal() {
+        const modal = document.getElementById('tradeModal');
+        const closeBtn = modal.querySelector('.modal-close');
+
+        closeBtn.addEventListener('click', () => {
+            this.closeModal();
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                this.closeModal();
+            }
+        });
+
+        const tradeTabs = document.querySelectorAll('.trade-tab');
+        tradeTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tradeType = tab.getAttribute('data-trade');
+                this.switchTradeTab(tradeType);
+            });
+        });
+
+        const shareInput = document.getElementById('shareAmount');
+        shareInput.addEventListener('input', () => {
+            this.updateTradeEstimate();
+        });
+
+        const executeBtn = document.getElementById('executeTradeBtn');
+        executeBtn.addEventListener('click', () => {
+            this.executeTrade();
+        });
+    }
+
+    openStockDetails(symbol) {
+        const stock = this.stockData.find(s => s.symbol === symbol);
+        if (!stock) return;
+
+        this.currentTradeStock = stock;
+
+        const modal = document.getElementById('tradeModal');
+        const title = document.getElementById('modalTitle');
+        const currentPrice = document.getElementById('currentPrice');
+
+        title.textContent = `Trade ${stock.name}`;
+        currentPrice.textContent = `$${stock.price.toFixed(2)}`;
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        this.updateTradeEstimate();
+    }
+
+    closeModal() {
+        const modal = document.getElementById('tradeModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    switchTradeTab(type) {
+        document.querySelectorAll('.trade-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        document.querySelector(`[data-trade="${type}"]`).classList.add('active');
+
+        const executeBtn = document.getElementById('executeTradeBtn');
+        executeBtn.textContent = type === 'buy' ? 'Buy Shares' : 'Sell Shares';
+        executeBtn.className = `btn btn-block ${type === 'buy' ? 'btn-primary' : 'btn-danger'}`;
+    }
+
+    updateTradeEstimate() {
+        if (!this.currentTradeStock) return;
+
+        const shares = parseInt(document.getElementById('shareAmount').value) || 0;
+        const price = this.currentTradeStock.price;
+        const total = shares * price;
+
+        document.getElementById('estimatedTotal').textContent = `$${total.toFixed(2)}`;
+        document.getElementById('availableBalance').textContent = `$${this.userBalance.toFixed(2)}`;
+    }
+
+    executeTrade() {
+        console.log('Trade executed!');
+        this.closeModal();
+    }
 }
 
 const app = new ScrobbleX();
