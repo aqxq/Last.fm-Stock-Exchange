@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ScrobbleX</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
-
   <div class="app-container">
-
     <div class="mobile-menu-toggle">
       <i class="fas fa-bars"></i>
     </div>
-
     <aside class="sidebar">
       <div class="sidebar-header">
         <div class="logo">
@@ -25,7 +23,6 @@
           <span>ScrobbleX</span>
         </div>
       </div>
-
       <nav class="sidebar-nav">
         <ul>
           <li class="nav-item active">
@@ -54,7 +51,6 @@
           </li>
         </ul>
       </nav>
-
       <div class="sidebar-footer">
         <div class="user-info">
           <div class="user-avatar">
@@ -64,15 +60,13 @@
             <div class="username">mus1cluvr</div>
             <div class="balance">
               <i class="fas fa-coins"></i>
-              <span>10000 SC</span>
+              <span id="userBalance">10,000 SC</span>
             </div>
           </div>
         </div>
       </div>
     </aside>
-
     <main class="main-content">
-
       <header class="header">
         <div class="search-container">
           <div class="search-bar">
@@ -80,13 +74,11 @@
             <input type="text" placeholder="Search for stocks..." id="searchInput">
           </div>
         </div>
-
         <div class="header-actions">
           <button class="btn btn-primary">
             <i class="fas fa-plus"></i>
             <span>Add Funds</span>
           </button>
-
           <div class="user-dropdown">
             <div class="user-avatar-small">
               <i class="fas fa-user"></i>
@@ -95,13 +87,11 @@
           </div>
         </div>
       </header>
-
       <div class="page-content">
         <div class="page-header">
           <h1>Market Dashboard</h1>
           <p class="page-subtitle">Track your favorite stocks and market trends</p>
         </div>
-
         <div class="market-overview">
           <div class="overview-card">
             <div class="card-icon">
@@ -109,36 +99,34 @@
             </div>
             <div class="card-content">
               <h3>Market Cap</h3>
-              <div class="card-value">$2.4B</div>
+              <div class="card-value" id="marketCapValue">$2.4B</div>
               <div class="card-change positive">
                 <i class="fas fa-arrow-up"></i>
                 <span>+3.2%</span>
               </div>
             </div>
           </div>
-
           <div class="overview-card">
             <div class="card-icon">
               <i class="fas fa-volume-high"></i>
             </div>
             <div class="card-content">
               <h3>24h Volume</h3>
-              <div class="card-value">$156M</div>
+              <div class="card-value" id="volumeValue">$156M</div>
               <div class="card-change positive">
                 <i class="fas fa-arrow-up"></i>
                 <span>+8.7%</span>
               </div>
             </div>
           </div>
-
           <div class="overview-card">
             <div class="card-icon">
               <i class="fas fa-fire"></i>
             </div>
             <div class="card-content">
               <h3>Top Gainer</h3>
-              <div class="card-value">$TAYLOR</div>
-              <div class="card-change positive">
+              <div class="card-value" id="topGainerValue">$TAYLOR</div>
+              <div class="card-change positive" id="topGainerChange">
                 <i class="fas fa-arrow-up"></i>
                 <span>+15.3%</span>
               </div>
@@ -150,15 +138,14 @@
             </div>
             <div class="card-content">
               <h3>Top Loser</h3>
-              <div class="card-value">$DRAKE</div>
-              <div class="card-change negative">
+              <div class="card-value" id="topLoserValue">$DRAKE</div>
+              <div class="card-change negative" id="topLoserChange">
                 <i class="fas fa-arrow-down"></i>
                 <span>-7.2%</span>
               </div>
             </div>
           </div>
         </div>
-
         <div class="dashboard-tabs">
           <div class="tab-nav">
             <button class="tab-btn active" data-tab="trending">
@@ -167,7 +154,7 @@
             </button>
             <button class="tab-btn" data-tab="portfolio">
               <i class="fas fa-briefcase"></i>
-              <span>Portfilio</span>
+              <span>My Portfolio</span>
             </button>
             <button class="tab-btn" data-tab="watchlist">
               <i class="fas fa-eye"></i>
@@ -178,80 +165,83 @@
               <span>News</span>
             </button>
           </div>
-
           <div class="tab-content">
             <div class="tab-pane active" id="trending">
               <div class="section-header">
                 <h2>Trending Artists</h2>
                 <p>Most active stocks in the last 24 hours</p>
               </div>
-
               <div class="featured-stock">
                 <div class="stock-chart-container">
                   <div class="chart-header">
-                    <h3>$KLAMAR</h3>
-                    <p class="stock-name">Kendrick Lamar</p>
-                    <div class="current-prices">
-                      <span class="price">$24.35</span>
-                      <span class="change positive">
-                        <i class="fas fa-arrow-up"></i>
-                        +5.3% (+1.23)
-                      </span>
+                    <div class="stock-info">
+                      <h3>$KLAMAR</h3>
+                      <p class="stock-name">Kendrick Lamar</p>
+                      <div class="current-price">
+                        <span class="price">$24.35</span>
+                        <span class="change positive">
+                          <i class="fas fa-arrow-up"></i>
+                          +5.3% (+$1.23)
+                        </span>
+                      </div>
+                    </div>
+                    <div class="chart-controls">
+                      <div class="time-range">
+                        <button class="range-btn" data-range="1D">1D</button>
+                        <button class="range-btn active" data-range="1W">1W</button>
+                        <button class="range-btn" data-range="1M">1M</button>
+                        <button class="range-btn" data-range="3M">3M</button>
+                      </div>
                     </div>
                   </div>
-                  <div class="chart-controls">
-                    <div class="time-range">
-                      <button class="range-btn" data-range="1D">1D</button>
-                      <button class="range-btn active" data-range="1W">1W</button>
-                      <button class="range-btn" data-range="1M">1M</button>
-                      <button class="range-btn" data-range="3M">3M</button>
-                    </div>
-                  </div>
-
                   <div class="chart-wrapper">
                     <canvas id="stockChart"></canvas>
                   </div>
                 </div>
               </div>
-
-              <div class="trending-stocks" id="trendingStocks"> </div>
+              <div class="trending-grid" id="trendingStocks">
+                <div class="loading-state">
+                  <div class="loading-spinner"></div>
+                  <span>Loading trending stocks...</span>
+                </div>
+              </div>
             </div>
-
             <div class="tab-pane" id="portfolio">
               <div class="section-header">
                 <h2>Portfolio Overview</h2>
                 <div class="portfolio-summary">
-                  <span class="value">$12,345.67</span>
-                  <span class="change positive">$1,234.56 (11.0%)</span>
+                  <div class="portfolio-value">
+                    <span class="value">$12,345.67</span>
+                    <span class="change positive">$1,234.56 (11.0%)</span>
+                  </div>
                 </div>
               </div>
-              <div class="portfolio-holdings" id="portfolioHoldings"></div>
+              <div class="portfolio-holdings" id="portfolioHoldings">
+                <p>Portfolio holdings will be displayed here</p>
+              </div>
             </div>
-
             <div class="tab-pane" id="watchlist">
               <div class="section-header">
                 <h2>My Watchlist</h2>
                 <p>Stocks you are currently watching</p>
               </div>
-              <div class="watchlist-grid" id="watchlistItems"></div>
+              <div class="watchlist-grid" id="watchlistItems">
+                <p>Your watchlist will be displayed here</p>
+              </div>
             </div>
-
             <div class="tab-pane" id="news">
               <div class="section-header">
                 <h2>Market News</h2>
                 <p>Latest updates from the music industry</p>
               </div>
-              <div class="news-feed" id="newsFeed"></div>
+              <div class="news-feed" id="newsFeed">
+                <p>Market news will be displayed here</p>
+              </div>
             </div>
           </div>
         </div>
     </main>
-
-
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <script src="js/main.js"></script>
-
   <div class="modal-overlay" id="tradeModal">
     <div class="modal">
       <div class="modal-header">
@@ -260,7 +250,6 @@
           <i class="fas fa-times"></i>
         </button>
       </div>
-
       <div class="modal-body">
         <div class="trade-tabs">
           <button class="trade-tab active" data-trade="buy">
@@ -272,20 +261,17 @@
             <span>Sell</span>
           </button>
         </div>
-
         <div class="trade-form">
           <div class="form-group">
             <label for="shareAmount">Number of Shares</label>
             <input type="number" id="shareAmount" min="1" value="1">
           </div>
-
           <div class="price-info">
             <div class="current-price">
               <span>Current Price</span>
               <span class="price" id="currentPrice">$24.35</span>
             </div>
           </div>
-
           <div class="trade-summary">
             <div class="summary-row">
               <span>Estimated Total</span>
@@ -296,7 +282,6 @@
               <span id="availableBalance">$10,000.00</span>
             </div>
           </div>
-
           <button class="btn btn-primary btn-block" id="executeTradeBtn">
             Buy Shares
           </button>
@@ -304,7 +289,8 @@
       </div>
     </div>
   </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>

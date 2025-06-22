@@ -193,11 +193,6 @@ body {
     flex: 1;
 }
 
-
-
-
-
-
 @media (max-width: 1024px) {
     .main-content {
         margin-left: 0;
@@ -218,6 +213,10 @@ body {
     .market-overview {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 16px;
+    }
+
+    .trending-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -279,11 +278,6 @@ body {
         height: 250px;
     }
 
-    .trending-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
     .stock-card {
         padding: 16px;
     }
@@ -296,6 +290,15 @@ body {
         width: 40px;
         height: 40px;
         font-size: 1rem;
+    }
+
+    .modal {
+        width: 95%;
+        margin: 20px;
+    }
+
+    .trade-tabs {
+        flex-direction: column;
     }
 
 }
@@ -311,7 +314,7 @@ body {
         gap: 8px;
     }
 
-    .portfolio-sunmary .value {
+    .portfolio-value .value {
         font-size: 1.5rem;
     }
 
@@ -407,6 +410,21 @@ body {
     transform: translateY(-1px);
 }
 
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
+
+.btn-block {
+    width: 100%;
+    justify-content: center;
+}
+
 .user-dropdown {
     display: flex;
     align-items: center;
@@ -464,7 +482,7 @@ body {
 .overview-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     padding: 24px;
     transition: var(--transition);
 }
@@ -543,6 +561,7 @@ body {
     padding: 16px 20px;
     background: transparent;
     border: none;
+    color: var(--text-muted);
     cursor: pointer;
     transition: var(--transition);
     border-bottom: 3px solid transparent;
@@ -591,7 +610,7 @@ body {
     font-size: 0.9rem;
 }
 
-.portfolio-sunmary {
+.portfolio-summary {
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
@@ -645,7 +664,7 @@ body {
 .stock-name {
     font-size: 0.9rem;
     color: var(--text-muted);
-    margin-bottom: 17px;
+    margin-bottom: 12px;
 }
 
 .current-price {
@@ -672,7 +691,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    gap: 8px;
+    gap: 12px;
 }
 
 .time-range {
@@ -692,11 +711,12 @@ body {
     cursor: pointer;
     font-size: 0.8rem;
     font-weight: 500;
+    transition: var(--transition);
 }
 
 .range-btn:hover {
-    background: var(--accent-primary);
-    color: white;
+    color: var(--text-primary);
+    background: var(--bg-hover);
 }
 
 .range-btn.active {
@@ -710,16 +730,15 @@ body {
     height: 300px;
 }
 
-#stock-chart {
+#stockChart {
     width: 100% !important;
-    height: 100% ! important;
+    height: 100% !important;
 }
 
 .trending-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 16px;
-    margin-top: 24px;
 }
 
 .stock-card {
@@ -826,7 +845,7 @@ body {
 }
 
 body.sidebar-open::before {
-    content: '';
+    content: "";
     position: fixed;
     top: 0;
     left: 0;
@@ -1129,15 +1148,4 @@ body.sidebar-open {
 .btn-block {
     width: 100%;
     justify-content: center;
-}
-
-@media (max-width: 768px) {
-    .modal {
-        width: 95%;
-        margin: 20px;
-    }
-
-    .trade-tabs {
-        flex-direction: column;
-    }
 }
