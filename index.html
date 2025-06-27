@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
   <div class="app-container">
     <div class="mobile-menu-toggle">
@@ -87,7 +86,7 @@
           </div>
         </div>
       </header>
-      <div class="page-content">
+      <div class="page-content" id="dashboardPage">
         <div class="page-header">
           <h1>Market Dashboard</h1>
           <p class="page-subtitle">Track your favorite stocks and market trends</p>
@@ -160,6 +159,10 @@
               <i class="fas fa-eye"></i>
               <span>Watchlist</span>
             </button>
+            <button class="tab-btn" data-tab="history">
+              <i class="fas fa-history"></i>
+              <span>History</span>
+            </button>
             <button class="tab-btn" data-tab="news">
               <i class="fas fa-newspaper"></i>
               <span>News</span>
@@ -211,13 +214,12 @@
                 <h2>Portfolio Overview</h2>
                 <div class="portfolio-summary">
                   <div class="portfolio-value">
-                    <span class="value">$12,345.67</span>
-                    <span class="change positive">$1,234.56 (11.0%)</span>
+                    <span class="value">$0.00</span>
+                    <span class="change positive">$0.00 (0.0%)</span>
                   </div>
                 </div>
               </div>
               <div class="portfolio-holdings" id="portfolioHoldings">
-                <p>Portfolio holdings will be displayed here</p>
               </div>
             </div>
             <div class="tab-pane" id="watchlist">
@@ -226,7 +228,14 @@
                 <p>Stocks you are currently watching</p>
               </div>
               <div class="watchlist-grid" id="watchlistItems">
-                <p>Your watchlist will be displayed here</p>
+              </div>
+            </div>
+            <div class="tab-pane" id="history">
+              <div class="section-header">
+                <h2>Transaction History</h2>
+                <p>Your complete trading history</p>
+              </div>
+              <div class="transaction-history" id="transactionHistory">
               </div>
             </div>
             <div class="tab-pane" id="news">
@@ -234,12 +243,86 @@
                 <h2>Market News</h2>
                 <p>Latest updates from the music industry</p>
               </div>
-              <div class="news-feed" id="newsFeed">
-                <p>Market news will be displayed here</p>
+              <div class="news-content" id="newsFeed">
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="page-content" id="marketPage" style="display: none;">
+        <div class="page-header">
+          <h1>Market</h1>
+          <p class="page-subtitle">Browse all available artist stocks</p>
+        </div>
+        <div class="market-filters">
+          <div class="filter-group">
+            <label>Sort by:</label>
+            <select id="marketSort">
+              <option value="change">Price Change</option>
+              <option value="price">Price</option>
+              <option value="volume">Volume</option>
+              <option value="name">Name</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label>Genre:</label>
+            <select id="genreFilter">
+              <option value="all">All Genres</option>
+              <option value="Pop">Pop</option>
+              <option value="Hip-Hop">Hip-Hop</option>
+              <option value="R&B">R&B</option>
+              <option value="Alternative">Alternative</option>
+            </select>
+          </div>
+        </div>
+        <div class="market-grid" id="marketGrid">
+        </div>
+      </div>
+      <div class="page-content" id="portfolioPage" style="display: none;">
+        <div class="page-header">
+          <h1>My Portfolio</h1>
+          <p class="page-subtitle">Your complete investment portfolio</p>
+        </div>
+        <div class="portfolio-summary-large">
+          <div class="portfolio-stats">
+            <div class="stat-item">
+              <h3>Total Value</h3>
+              <div class="stat-value" id="portfolioTotalValue">$0.00</div>
+            </div>
+            <div class="stat-item">
+              <h3>Total Gain/Loss</h3>
+              <div class="stat-value" id="portfolioTotalGainLoss">$0.00 (0.0%)</div>
+            </div>
+            <div class="stat-item">
+              <h3>Holdings</h3>
+              <div class="stat-value" id="portfolioHoldingsCount">0</div>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio-table-container">
+          <div class="portfolio-table" id="portfolioTable">
+          </div>
+        </div>
+      </div>
+      <div class="page-content" id="leaderboardPage" style="display: none;">
+        <div class="page-header">
+          <h1>Leaderboard</h1>
+          <p class="page-subtitle">Top performing traders this month</p>
+        </div>
+        <div class="leaderboard-filters">
+          <div class="filter-group">
+            <label>Time Period:</label>
+            <select id="leaderboardPeriod">
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="monthly" selected>Monthly</option>
+              <option value="all-time">All Time</option>
+            </select>
+          </div>
+        </div>
+        <div class="leaderboard-table" id="leaderboardTable">
+        </div>
+      </div>
     </main>
   </div>
   <div class="modal-overlay" id="tradeModal">
@@ -292,5 +375,4 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/main.js"></script>
 </body>
-
 </html>
